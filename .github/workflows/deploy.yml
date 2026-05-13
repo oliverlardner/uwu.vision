@@ -34,7 +34,7 @@ jobs:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
           set -euo pipefail
-          DEST="${DEPLOY_PATH:-public_html}"
+          DEST="${DEPLOY_PATH:-/home/uwuvision/uwu.vision}"
           rsync -avz --delete \
             -e 'ssh -i ~/.ssh/cpanel_deploy -o IdentitiesOnly=yes' \
             ./public/ "${SSH_USER}@${SSH_HOST}:${DEST}/"
