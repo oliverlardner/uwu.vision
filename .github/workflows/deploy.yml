@@ -22,19 +22,27 @@ jobs:
           SSH_HOST: ${{ secrets.CPANEL_HOST }}
         run: |
           set -euo pipefail
+          if [ -z "${SSH_HOST:-}" ]; then echo "::error::CPANEL_HOST secret is empty or unset"; exit 1; fi
+          if [ -z "${SSH_PRIVATE_KEY:-}" ]; then echo "::error::CPANEL_SSH_KEY secret is empty or unset"; exit 1; fi
           mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" | sed 's/\r$//' > ~/.ssh/cpanel_deploy
           chmod 600 ~/.ssh/cpanel_deploy
-          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          touch ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
 
       - name: Rsync site to server
         env:
           SSH_HOST: ${{ secrets.CPANEL_HOST }}
           SSH_USER: ${{ secrets.CPANEL_USER }}
+          SSH_PORT: ${{ secrets.CPANEL_SSH_PORT }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
           set -euo pipefail
+          if [ -z "${SSH_USER:-}" ]; then echo "::error::CPANEL_USER secret is empty or unset"; exit 1; fi
           DEST="${DEPLOY_PATH:-/home/uwuvision/uwu.vision}"
+          PORT_ARG=
+          if [ -n "${SSH_PORT:-}" ]; then PORT_ARG="-p ${SSH_PORT}"; fi
           rsync -avz --delete \
-            -e 'ssh -i ~/.ssh/cpanel_deploy -o IdentitiesOnly=yes' \
+            -e "ssh ${PORT_ARG} -i ~/.ssh/cpanel_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=${HOME}/.ssh/known_hosts" \
             ./public/ "${SSH_USER}@${SSH_HOST}:${DEST}/"
