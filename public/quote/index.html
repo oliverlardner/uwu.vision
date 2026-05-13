@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>uwu.vision — Quote Builder</title>
+  <meta name="description" content="Build an indicative quote for immersive spatial video capture, grading, editing, and delivery with uwu.vision.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://uwu.vision/quote/">
+  <meta property="og:site_name" content="uwu.vision">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:title" content="uwu.vision — Quote Builder">
+  <meta property="og:description" content="Configure capture, grading, editing, and delivery options and generate an indicative immersive production quote.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://uwu.vision/quote/">
+  <meta property="og:image" content="https://uwu.vision/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="uwu.vision quote builder for immersive production">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="uwu.vision — Quote Builder">
+  <meta name="twitter:description" content="Generate an indicative immersive production quote with selectable capture and delivery options.">
+  <meta name="twitter:image" content="https://uwu.vision/assets/img/og.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('uwu-theme') || 'auto';
+        if (t !== 'light' && t !== 'dark' && t !== 'auto') t = 'auto';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'auto');
+      }
+    })();
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260512-2">
+  <link rel="stylesheet" href="/assets/css/quote.css?v=20260512-2">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/index.html">
+        <span class="brand-mark">◖</span>
+        <span class="brand-word">uwu.vision</span>
+      </a>
+      <nav class="nav">
+        <a href="#quote-builder"><span class="nav-num">01</span> Build</a>
+        <a href="#quote-summary"><span class="nav-num">02</span> Summary</a>
+      </nav>
+      <div class="header-right">
+        <div class="theme-toggle" role="radiogroup" aria-label="Color theme">
+          <button type="button" class="tt-opt" data-set-theme="light" role="radio" aria-checked="false" aria-label="Light theme" title="Light">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41"></path>
+            </svg>
+          </button>
+          <button type="button" class="tt-opt" data-set-theme="auto" role="radio" aria-checked="false" aria-label="System theme" title="System">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </button>
+          <button type="button" class="tt-opt" data-set-theme="dark" role="radio" aria-checked="false" aria-label="Dark theme" title="Dark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path>
+            </svg>
+          </button>
+        </div>
+        <a class="status-pill" href="mailto:hi@uwu.vision?subject=Quote%20request" aria-label="Start a quote email">
+          <span class="status-dot"></span>
+          <span class="status-label">Request · Quote</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="quote-builder">
+    <section class="content quote-hero">
+      <div class="container">
+        <p class="eyebrow reveal">Build a quote</p>
+        <h1 class="quote-title reveal">What are we shooting?</h1>
+        <p class="lede reveal">Configure capture, post, and delivery options. Every selection updates your quote instantly.</p>
+        <p class="quote-note reveal">Indicative pricing. Final number confirmed in conversation.</p>
+      </div>
+    </section>
+
+    <section class="content quote-content">
+      <div class="container quote-layout">
+        <section class="quote-steps" aria-label="Quote options">
+          <div class="quote-step reveal" data-step="tier">
+            <header class="section-head">
+              <span class="section-num">01</span>
+              <span class="section-label">Tier</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="tier" data-value="commercial" type="button">
+                <span class="option-title">Commercial</span>
+                <span class="option-copy">Brand, agency, and specialist production.</span>
+                <span class="price-chip">Standard rates</span>
+              </button>
+              <button class="option-card" data-group="tier" data-value="academic" type="button">
+                <span class="option-title">Academic / Research</span>
+                <span class="option-copy">University, lab, and funded research rates.</span>
+                <span class="price-chip">Reduced rates</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="quote-step reveal" data-step="length">
+            <header class="section-head">
+              <span class="section-num">02</span>
+              <span class="section-label">Shoot session</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="length" data-value="half" type="button">
+                <span class="option-title">Half day (about 2 hours)</span>
+                <span class="option-copy">Efficient capture window, suitable for focused setups.</span>
+                <span class="price-chip" data-price="captureHalf">AUD $0</span>
+              </button>
+              <button class="option-card" data-group="length" data-value="full" type="button">
+                <span class="option-title">Full day (about 4 hours)</span>
+                <span class="option-copy">Best for complex scenes and complete coverage.</span>
+                <span class="price-chip" data-price="captureFull">AUD $0</span>
+              </button>
+            </div>
+            <div class="day-counter" data-day-counter hidden>
+              <div class="day-counter-head">
+                <span>Shoot days</span>
+                <span class="discount-pill" data-discount-pill>-0%</span>
+              </div>
+              <div class="day-counter-controls">
+                <button type="button" class="day-btn" data-day="dec" aria-label="Decrease day count">−</button>
+                <output class="day-value" data-day-value>1 day</output>
+                <button type="button" class="day-btn" data-day="inc" aria-label="Increase day count">+</button>
+              </div>
+              <p class="small-note">Progressive discount scales from 0% (1 day) to 20% (14+ days).</p>
+            </div>
+          </div>
+
+          <div class="quote-step reveal" data-step="audio">
+            <header class="section-head">
+              <span class="section-num">03</span>
+              <span class="section-label">Spatial audio</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="audio" data-value="yes" type="button">
+                <span class="option-title">Record spatial audio</span>
+                <span class="option-copy">Recommended for complete immersive presence.</span>
+                <span class="price-chip">Included</span>
+              </button>
+              <button class="option-card" data-group="audio" data-value="no" type="button">
+                <span class="option-title">No spatial audio</span>
+                <span class="option-copy">Reduce cost if spatial audio is not required.</span>
+                <span class="price-chip">Save AUD $200/day</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="quote-step reveal" data-step="grade">
+            <header class="section-head">
+              <span class="section-num">04</span>
+              <span class="section-label">Color grade & finishing</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="grade" data-value="yes" type="button">
+                <span class="option-title">Include grading</span>
+                <span class="option-copy">Immersive color, polish, and delivery prep.</span>
+                <span class="price-chip" data-price="grade">AUD $0</span>
+              </button>
+              <button class="option-card" data-group="grade" data-value="no" type="button">
+                <span class="option-title">Without grading</span>
+                <span class="option-copy">Raw workflow, delivered for external post.</span>
+                <span class="price-chip">AUD $0</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="quote-step reveal" data-step="edit">
+            <header class="section-head">
+              <span class="section-num">05</span>
+              <span class="section-label">Editing</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="edit" data-value="yes" type="button">
+                <span class="option-title">Include editing</span>
+                <span class="option-copy">Specialist immersive editing and conform.</span>
+                <span class="price-chip" data-price="edit">AUD $0</span>
+              </button>
+              <button class="option-card" data-group="edit" data-value="byo" type="button">
+                <span class="option-title">BYO editing</span>
+                <span class="option-copy">You handle the edit with your own team.</span>
+                <span class="price-chip">AUD $0</span>
+              </button>
+            </div>
+            <p class="small-note" data-byo-note hidden>When BYO editing is selected, RAW delivery becomes required.</p>
+          </div>
+
+          <div class="quote-step reveal" data-step="delivery">
+            <header class="section-head">
+              <span class="section-num">06</span>
+              <span class="section-label">Delivery format</span>
+            </header>
+            <div class="option-grid option-grid--2">
+              <button class="option-card" data-group="delivery" data-value="finished" type="button">
+                <span class="option-title">Finished files only</span>
+                <span class="option-copy">Final mastered exports ready to hand over.</span>
+                <span class="price-chip">Deliverables</span>
+              </button>
+              <button class="option-card" data-group="delivery" data-value="raw" type="button">
+                <span class="option-title">RAW files (archival)</span>
+                <span class="option-copy">Archive package and source media handoff.</span>
+                <span class="price-chip">Source media</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="quote-step reveal" data-step="storage">
+            <header class="section-head">
+              <span class="section-num">07</span>
+              <span class="section-label">Delivery media</span>
+            </header>
+            <p class="small-note">RAW Capture writes about 1 GB/s (about 8 TB for a 2-hour shoot).<br>
+            Finished files are delivered as ProRes 422 HQ (10-bit 4:2:2) files.</p>
+            <div class="option-grid option-grid--3">
+              <button class="option-card" data-group="storage" data-value="byo" type="button">
+                <span class="option-title">BYO storage</span>
+                <span class="option-copy">Bring your own approved storage.</span>
+                <span class="price-chip">AUD $0</span>
+              </button>
+              <button class="option-card" data-group="storage" data-value="ssd" type="button">
+                <span class="option-title">Samsung T9 Portable SSD 4TB</span>
+                <span class="option-copy">Fast portable SSD option.</span>
+                <span class="price-chip">AUD $1,300</span>
+              </button>
+              <button class="option-card" data-group="storage" data-value="module" type="button">
+                <span class="option-title">Blackmagic Design 8TB Media Module</span>
+                <span class="option-copy">Native module for direct camera workflow.</span>
+                <span class="price-chip">AUD $6,149</span>
+              </button>
+            </div>
+            <a class="source-link" target="_blank" rel="noopener" href="https://videoguys.com.au/products/blackmagic-design-8tb-media-module">Blackmagic module source ↗</a>
+            <p class="small-note">Longer shoots may need multiple units. We confirm final media quantity during booking.</p>
+          </div>
+        </section>
+
+        <aside class="quote-panel reveal" id="quote-summary" aria-label="Live quote summary">
+          <p class="eyebrow">Your quote (AUD)</p>
+          <ul class="quote-lines" data-quote-lines></ul>
+          <div class="quote-discounts" data-quote-discounts hidden></div>
+          <div class="quote-total">
+            <span>Total</span>
+            <strong data-total>AUD $0</strong>
+          </div>
+          <div class="quote-actions">
+            <a class="btn btn-primary" href="#" data-email-quote>
+              <span>Email this quote</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <button type="button" class="btn btn-ghost" data-copy-quote>Copy summary</button>
+          </div>
+          <p class="small-note">Includes camera operator and assistant. Indicative pricing only.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content quote-equipment">
+      <div class="container">
+        <div class="quote-step reveal">
+          <header class="section-head">
+            <span class="section-num">08</span>
+            <span class="section-label">Available equipment</span>
+          </header>
+          <p class="small-note">Included and available based on production requirements.</p>
+          <ul class="equipment-list">
+            <li><span class="equipment-name">Blackmagic Cine URSA Immersive Camera</span></li>
+            <li><span class="equipment-name">Heavymount Tripod</span></li>
+            <li><span class="equipment-name">Base plates and adaptors</span></li>
+            <li><span class="equipment-name">Blackmagic 8TB Media Modules</span><span class="equipment-qty">3x</span></li>
+            <li><span class="equipment-name">Blackmagic Design Media Dock for URSA Cine</span></li>
+            <li><span class="equipment-name">Rode SoundField NT-SF1 Ambisonic Microphone</span></li>
+            <li><span class="equipment-name">Zoom F6 6-Channel Recorder</span></li>
+            <li><span class="equipment-name">Tentacle Sync E Timecode Generator</span></li>
+            <li><span class="equipment-name">Tentacle Sync TRACK E Pocket Audio Recorder with Lavalier Mic</span><span class="equipment-qty">2x</span></li>
+            <li><span class="equipment-name">B155Cine battery</span></li>
+            <li><span class="equipment-name">B280Cine battery</span></li>
+            <li><span class="equipment-name">AC Power Supply</span></li>
+            <li><span class="equipment-name">bebob BS2 Dual B-Mount Battery Charger with 4-Pin XLR Output</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-quote" data-mobile-quote>
+    <button class="mobile-quote-toggle" type="button" data-mobile-toggle aria-expanded="false" aria-controls="mobile-quote-panel">
+      <span>Total</span>
+      <strong data-mobile-total>AUD $0</strong>
+      <span class="mobile-chevron" aria-hidden="true">⌃</span>
+    </button>
+    <div class="mobile-quote-panel" id="mobile-quote-panel" hidden>
+      <ul class="quote-lines" data-mobile-lines></ul>
+      <div class="quote-discounts" data-mobile-discounts hidden></div>
+      <a class="btn btn-primary" href="#" data-mobile-email>
+        <span>Email this quote</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wordmark" aria-hidden="true">uwu.vision</div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Universal Weebs Unlimited PTY LTD</span>
+        <span class="footer-meta">Made in Narrm · ABN 27 657 246 949</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/quote.js?v=20260512-2"></script>
+</body>
+</html>
