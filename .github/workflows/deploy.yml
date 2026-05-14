@@ -1,7 +1,5 @@
-# Pushes need outbound SSH from GitHub to your host. "Connection timed out" on port 22 means the
-# runner never reached SSH (wrong host, wrong port, or firewall). Use the hostname from cPanel →
-# SSH Access (often not your public site domain). Set CPANEL_SSH_PORT if SSH is not on 22.
-# Some hosts block datacenter IPs; then use server-side git pull, FTP deploy, or a self-hosted runner.
+# Triggers a server-side git pull. The server already has a GitHub deploy key configured
+# for the clone at DEPLOY_PATH, so the runner only needs to SSH in and update the working tree.
 name: Deploy to cPanel
 
 on:
@@ -17,16 +15,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Configure SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_KEY }}
-          SSH_HOST: ${{ secrets.CPANEL_HOST }}
         run: |
           set -euo pipefail
-          if [ -z "${SSH_HOST:-}" ]; then echo "::error::CPANEL_HOST secret is empty or unset"; exit 1; fi
           if [ -z "${SSH_PRIVATE_KEY:-}" ]; then echo "::error::CPANEL_SSH_KEY secret is empty or unset"; exit 1; fi
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -35,7 +28,7 @@ jobs:
           touch ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Rsync site to server
+      - name: Git pull on server
         env:
           SSH_HOST: ${{ secrets.CPANEL_HOST }}
           SSH_USER: ${{ secrets.CPANEL_USER }}
@@ -43,11 +36,16 @@ jobs:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
           set -euo pipefail
-          echo "::notice::SSH deploy: if you see 'Connection timed out', verify CPANEL_HOST matches cPanel SSH hostname, set CPANEL_SSH_PORT if needed, and that the server allows SSH from the internet."
+          if [ -z "${SSH_HOST:-}" ]; then echo "::error::CPANEL_HOST secret is empty or unset"; exit 1; fi
           if [ -z "${SSH_USER:-}" ]; then echo "::error::CPANEL_USER secret is empty or unset"; exit 1; fi
-          DEST="${DEPLOY_PATH:-/home/uwuvision/uwu.vision}"
+          REPO_DIR="${DEPLOY_PATH:-/home/uwuvision/uwu.vision}"
           PORT_ARG=
           if [ -n "${SSH_PORT:-}" ]; then PORT_ARG="-p ${SSH_PORT}"; fi
-          rsync -avz --delete \
-            -e "ssh ${PORT_ARG} -i ~/.ssh/cpanel_deploy -o IdentitiesOnly=yes -o ConnectTimeout=30 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=${HOME}/.ssh/known_hosts" \
-            ./public/ "${SSH_USER}@${SSH_HOST}:${DEST}/"
+          ssh ${PORT_ARG} \
+            -i ~/.ssh/cpanel_deploy \
+            -o IdentitiesOnly=yes \
+            -o ConnectTimeout=30 \
+            -o StrictHostKeyChecking=accept-new \
+            -o UserKnownHostsFile="${HOME}/.ssh/known_hosts" \
+            "${SSH_USER}@${SSH_HOST}" \
+            "set -euo pipefail; cd '${REPO_DIR}' && git fetch --prune origin && git reset --hard origin/main && git log -1 --oneline"
